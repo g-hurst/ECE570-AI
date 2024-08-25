@@ -15,7 +15,7 @@ docker-run:
 
 .phony: docker-shell
 docker-shell: 
-
+	echo "this is not yet implimented..."
 
 .phony: docker-rm-dangling
 docker-rm-dangling: 
