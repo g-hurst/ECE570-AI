@@ -10,7 +10,7 @@ docker-build:
 docker-run: 
 	echo $(pwd)
 	docker run -p 8888:8888  \
-		--mount type=bind,source="$(shell pwd)/Assignment_01",target="$(CONTAINER_WORKDIR)/Assignment_01" \
+		--mount type=bind,source="$(shell pwd)",target="$(CONTAINER_WORKDIR)" \
 		$(CONTAINER_NAME)
 
 .phony: docker-shell
