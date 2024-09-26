@@ -7897,7 +7897,7 @@ The accuracy is 0.9474
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="sd">"""ReLU activation function."""</span>
     <span class="c1"># &lt;Your code&gt;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
     <span class="c1"># &lt;end code&gt;</span>
 
 <span class="k">def</span> <span class="nf">relu_derivative</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
@@ -7909,7 +7909,7 @@ The accuracy is 0.9474
 <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="sd">"""Sigmoid activation function."""</span>
     <span class="c1"># &lt;Your code&gt;</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>    
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>    
     <span class="c1"># &lt;end code&gt;</span>
 </pre></div>
 </div>
@@ -7984,14 +7984,14 @@ The accuracy is 0.9474
 
         <span class="c1"># &lt;Your code&gt;</span>
         <span class="c1"># Kaiming initialization for the first layer weights</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">W1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">B1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">,</span>   <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">))</span>
         <span class="c1"># Kaiming initialization for the second layer weights</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">W2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">B2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">))</span>
         <span class="c1"># Kaiming initialization for the third layer weights</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">W3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">B3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">)</span>  <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">))</span>
         <span class="c1"># &lt;end code&gt;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
@@ -8001,13 +8001,12 @@ The accuracy is 0.9474
 <span class="sd">        :return: Activated output of the network</span>
 <span class="sd">        """</span>
         <span class="c1"># &lt;Your code&gt;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">h1</span>  <span class="o">=</span> <span class="n">X</span>  <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">B1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ha1</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">h2</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ha1</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">B2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ha2</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">h3</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ha2</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W3</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">B3</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ha3</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h3</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ha3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hu1</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h1</span>  <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hu1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hu2</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h1</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W2</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2</span>  <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hu2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hu3</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h2</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W3</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b3</span>
+        <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hu3</span><span class="p">)</span>
         <span class="c1"># &lt;end code&gt;</span>
 
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
@@ -8024,25 +8023,24 @@ The accuracy is 0.9474
 
         <span class="c1"># &lt;Your code&gt;</span>
         <span class="c1"># Gradients for the third layer (output layer)</span>
-        <span class="n">dZ3</span> <span class="o">=</span> <span class="n">dZ3</span> <span class="o">*</span> <span class="p">(</span><span class="n">output</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">output</span><span class="p">))</span>
-        <span class="n">dW3</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ha2</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dZ3</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
-        <span class="n">db3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dZ3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">dW3</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h2</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dZ3</span><span class="p">)</span>
+        <span class="n">db3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dZ3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="c1"># Gradients for the second hidden layer</span>
-        <span class="n">dZ2</span> <span class="o">=</span> <span class="p">(</span><span class="n">dZ3</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W3</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h2</span><span class="p">)</span>
-        <span class="n">dW2</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ha1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dZ2</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
-        <span class="n">db2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dZ2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">dZ2</span> <span class="o">=</span> <span class="p">(</span><span class="n">dZ3</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W3</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hu2</span><span class="p">)</span>
+        <span class="n">dW2</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dZ2</span><span class="p">)</span>
+        <span class="n">db2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dZ2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="c1"># Gradients for the first hidden layer</span>
-        <span class="n">dZ1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dZ2</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h1</span><span class="p">)</span>
-        <span class="n">dW1</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dZ1</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
-        <span class="n">db1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dZ1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">dZ1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dZ2</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">W2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hu1</span><span class="p">)</span>
+        <span class="n">dW1</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dZ1</span><span class="p">)</span>
+        <span class="n">db1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dZ1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="c1"># Update weights and biases using gradients</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">W3</span> <span class="o">-=</span> <span class="n">dW3</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">B3</span> <span class="o">-=</span> <span class="n">db3</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">W2</span> <span class="o">-=</span> <span class="n">dW2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">B2</span> <span class="o">-=</span> <span class="n">db2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">W1</span> <span class="o">-=</span> <span class="n">dW1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">B1</span> <span class="o">-=</span> <span class="n">db1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W3</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dW3</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b3</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">db3</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W2</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dW2</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b2</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">db2</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W1</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dW1</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b1</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">db1</span> <span class="o">/</span> <span class="n">m</span>
         <span class="c1"># &lt;end code&gt;</span>
 
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -8112,17 +8110,17 @@ The accuracy is 0.9474
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Epoch 0/1000, Loss: 2.1532
-Epoch 100/1000, Loss: 4.6919
-Epoch 200/1000, Loss: 5.0054
-Epoch 300/1000, Loss: 5.5196
-Epoch 400/1000, Loss: 5.8797
-Epoch 500/1000, Loss: 5.7304
-Epoch 600/1000, Loss: 6.3595
-Epoch 700/1000, Loss: 7.1264
-Epoch 800/1000, Loss: 6.9601
-Epoch 900/1000, Loss: 6.9613
-Epoch 1000/1000, Loss: 7.2941
+<pre>Epoch 0/1000, Loss: 0.8212
+Epoch 100/1000, Loss: 0.7472
+Epoch 200/1000, Loss: 0.7149
+Epoch 300/1000, Loss: 0.7013
+Epoch 400/1000, Loss: 0.6957
+Epoch 500/1000, Loss: 0.6930
+Epoch 600/1000, Loss: 0.6918
+Epoch 700/1000, Loss: 0.6918
+Epoch 800/1000, Loss: 0.6923
+Epoch 900/1000, Loss: 0.6933
+Epoch 1000/1000, Loss: 0.6948
 </pre>
 </div>
 </div>
@@ -8155,9 +8153,9 @@ Epoch 1000/1000, Loss: 7.2941
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[1 0 0 1 1 0 0 0 0 1 1 0 1 0 1 0 1 1 1 0 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 0
- 1 0 1 1 0 1 1 1 0 1 1 1 1 0 0 0 1 1 1 1 0 0 1 1 0 0 1 1 1 0 0 1 1 0 0 1 0
- 1 1 1 1 1 1 0 1 1 0 0 0 0 0 1 1 1 0 1 1 1 1 0 0 1 0 0 1 0 0 1 1 1 0 1 1 0
+<pre>[1 0 0 1 1 0 0 1 0 1 1 0 1 1 1 0 1 1 1 0 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1
+ 1 0 1 1 0 1 1 1 1 1 1 1 1 0 0 1 0 1 1 1 0 0 1 1 0 0 1 1 1 0 0 1 1 0 0 1 0
+ 1 1 1 1 1 1 0 1 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 1 0 0 1 0 0 1 1 1 0 1 1 0
  1 1 0]
 [1 0 0 1 1 0 0 0 1 1 1 0 1 0 1 0 1 1 1 0 0 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 0
  1 0 1 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 0 0 1 1 0 0 1 1 1 0 0 1 1 0 0 1 0
@@ -8165,6 +8163,34 @@ Epoch 1000/1000, Loss: 7.2941
  1 1 0]
 The accuracy is 0.9386
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
 </div>
 </div>
 </div>
