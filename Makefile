@@ -6,6 +6,10 @@ CONTAINER_WORKDIR = /ece57000
 docker-build:
 	docker build -t $(CONTAINER_NAME) .
 
+.phony: docker-rebuild
+docker-rebuild:
+	docker build --no-cache -t $(CONTAINER_NAME) .
+
 .phony: docker-run
 docker-run: 
 	echo $(pwd)
