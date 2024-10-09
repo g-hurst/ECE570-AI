@@ -12,7 +12,6 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # installs spesific for FinRL
-RUN pip install wrds swig
 RUN apt-get update -y -qq
 RUN apt-get install -y -qq \
                 cmake \
@@ -20,7 +19,13 @@ RUN apt-get install -y -qq \
                 python3-dev \
                 zlib1g-dev \
                 libgl1-mesa-glx \
-                swig
+                swig 
+RUN pip install \
+                wrds \
+                swig \
+                gym \
+                stable-baselines \
+                pyfolio
 
 # install my fork with a few changes
 RUN pip install git+https://github.com/g-hurst/FinRL
