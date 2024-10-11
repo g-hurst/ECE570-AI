@@ -14,6 +14,8 @@ docker-rebuild:
 docker-run: 
 	echo $(pwd)
 	docker run -p 8888:8888  \
+		-it --rm \
+		--runtime=nvidia \
 		--gpus all \
 		--mount type=bind,source="$(shell pwd)",target="$(CONTAINER_WORKDIR)" \
 		$(CONTAINER_NAME)

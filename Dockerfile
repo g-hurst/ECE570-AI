@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.0.3-base-ubuntu20.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 
 # Set the working directory to /ece57000
 WORKDIR /ece57000
@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y \
                 libssl-dev \
                 xz-utils \
                 zlib1g-dev \
-                liblzma-dev
+                liblzma-dev \ 
+                libglib2.0-0
 
 # installs spesific for FinRL
 RUN apt-get update -y 
