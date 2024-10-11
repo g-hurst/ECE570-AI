@@ -2,10 +2,13 @@ pandas
 numpy
 matplotlib
 scikit-learn
-torch
-torchvision
+
 wrds 
 swig 
 gym 
 stable-baselines 
 pyfolio
+
+-i https://download.pytorch.org/whl/cu124
+torch 2.4.1
+torchvision 2.4.1
