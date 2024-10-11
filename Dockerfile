@@ -20,12 +20,7 @@ RUN apt-get install -y -qq \
                 zlib1g-dev \
                 libgl1-mesa-glx \
                 swig 
-RUN pip install \
-                wrds \
-                swig \
-                gym \
-                stable-baselines \
-                pyfolio
+                 
 
 # install my fork with a few changes
 RUN pip install git+https://github.com/g-hurst/FinRL
