@@ -1,29 +1,50 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10
+FROM nvidia/cuda:11.0.3-base-ubuntu20.04
 
 # Set the working directory to /ece57000
 WORKDIR /ece57000
+
+# install common dependancies 
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+                clang \
+                build-essential \
+                bash \
+                ca-certificates \
+                git \
+                wget \
+                cmake \
+                curl \
+                software-properties-common \
+                ffmpeg \
+                libsm6 \
+                libxext6 \
+                libffi-dev \
+                libssl-dev \
+                xz-utils \
+                zlib1g-dev \
+                liblzma-dev
+
+# installs spesific for FinRL
+RUN apt-get update -y 
+RUN apt-get install -y  \
+                libopenmpi-dev \
+                python3-dev \
+                libgl1-mesa-glx \
+                swig
+
+# install python3.9 
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y python3.9 python3-pip
 
 # Install Jupyter Notebook
 RUN pip install jupyter
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-# installs spesific for FinRL
-RUN apt-get update -y -qq
-RUN apt-get install -y -qq \
-                cmake \
-                libopenmpi-dev \
-                python3-dev \
-                zlib1g-dev \
-                libgl1-mesa-glx \
-                swig 
-                 
+RUN pip install --no-cache-dir -r requirements.txt 
 
 # install my fork with a few changes
-RUN pip install git+https://github.com/g-hurst/FinRL
+# RUN pip install git+https://github.com/g-hurst/FinRL
 
 # Make port 8888 available to the world outside this container
 EXPOSE 8888
