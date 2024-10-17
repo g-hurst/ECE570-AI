@@ -1,4 +1,5 @@
-FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu20.04
+# FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu20.04
+from python:3.9
 
 # Set the working directory to /ece57000
 WORKDIR /ece57000
