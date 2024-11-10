@@ -26,27 +26,12 @@ RUN apt-get update && apt-get install -y \
                 liblzma-dev \ 
                 libglib2.0-0
 
-# installs spesific for FinRL
-RUN apt-get update -y 
-RUN apt-get install -y  \
-                libopenmpi-dev \
-                python3-dev \
-                libgl1-mesa-glx \
-                swig
-
-# install python3.9 
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get update && apt-get install -y python3.9 python3-pip
-
 # Install Jupyter Notebook
 RUN pip install jupyter
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt 
-
-# install my fork with a few changes
-# RUN pip install git+https://github.com/g-hurst/FinRL
 
 # Make port 8888 available to the world outside this container
 EXPOSE 8888
